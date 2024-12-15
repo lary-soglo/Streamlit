@@ -50,7 +50,7 @@ if 'iris_data' in locals():
     st.dataframe(iris_data)
     
  
-    # Nettoyage des colonnes utilisées pour le graphique
+# Nettoyage des colonnes utilisées pour le graphique
     if 'species_numeric' in iris_data.columns and 'petal_length' in iris_data.columns:
         # Supprimer les lignes avec des valeurs manquantes ou incorrectes
         iris_data_cleaned = iris_data[['species_numeric', 'petal_length']].dropna()
@@ -61,6 +61,7 @@ if 'iris_data' in locals():
             plt.figure(figsize=(10, 6))
             sns.boxplot(x='species_numeric', y='petal_length', data=iris_data_cleaned)
             st.pyplot(plt)
+            plt.close()
         else:
             st.warning("Il n'y a pas assez de catégories distinctes dans la colonne 'species_numeric' pour tracer un graphique.")
     else:
